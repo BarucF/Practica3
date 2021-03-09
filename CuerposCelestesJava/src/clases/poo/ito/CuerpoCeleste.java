@@ -32,7 +32,7 @@ public class CuerpoCeleste {
 		float Desplazamiento = 0F;
 		des.setLongitud(a);
 		des.setLatitud(b);
-		i=Integer.parseInt(JOptionPane.showInputDialog("Cual es la Longitud 2?"));
+		i=Integer.parseInt(JOptionPane.showInputDialog("Cual es la Longitud No.2?"));
 		j=Integer.parseInt(JOptionPane.showInputDialog("Cual es la Latitud 2?"));
 		Desplazamiento=(float)(Math.sqrt((float)((Math.pow((i-des.getLongitud()), 2))+(Math.pow((j-des.getLatitud()), 2)))));
 		if(Desplazamiento==0)
