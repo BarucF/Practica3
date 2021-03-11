@@ -27,12 +27,8 @@ public class CuerpoCeleste {
 	}
 	
 	public float Desplazamiento(int i, int j) {
-		float a=12.313F,b=124.125F;
-		Ubicacion des=new Ubicacion();
 		float Desplazamiento = 0F;
-		des.setLongitud(a);
-		des.setLatitud(b);
-		Desplazamiento=(float)(Math.sqrt((float)((Math.pow((i-des.getLongitud()), 2))+(Math.pow((j-des.getLatitud()), 2)))));
+		Desplazamiento=(float)(Math.sqrt((float)((Math.pow((i-this.Localizaciones.getLongitud()), 2))+(Math.pow((j-this.Localizaciones.getLatitud()), 2)))));
 		if(Desplazamiento==0)
 			System.out.println("No hay desplazamiento");
 		else

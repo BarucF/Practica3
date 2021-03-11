@@ -10,7 +10,7 @@ public class MyApp {
 		System.out.println(d);
 		d.Desplazamiento(150, 320);
 		System.out.println(d);
-		d.Desplazamiento(10, 480);
+		d.Desplazamiento(150, 320);
 		System.out.println(d);
 		
 	}
