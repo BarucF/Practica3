@@ -5,10 +5,14 @@ import clases.poo.ito.Ubicacion;
 
 public class MyApp {
 	public static void run() {
-		CuerpoCeleste d= new CuerpoCeleste();
-		JOptionPane.showMessageDialog(null,"Los datos registrados del cuerpo celeste son los siguientes:");
-		JOptionPane.showMessageDialog(null,new CuerpoCeleste("B-639",new Ubicacion (12.313F,124.125F,"Marzo-Junio",1200000F),"agua"));
-		d.Desplazamiento(0, 0);
+		CuerpoCeleste d= new CuerpoCeleste("B-639",new Ubicacion (12.313F,124.125F,"Marzo-Junio",1200000F),"agua");
+		System.out.println("Los datos registrados del cuerpo celeste son los siguientes:");
+		System.out.println(d);
+		d.Desplazamiento(150, 320);
+		System.out.println(d);
+		d.Desplazamiento(10, 480);
+		System.out.println(d);
+		
 	}
 
 	public static void main(String[] args) {
