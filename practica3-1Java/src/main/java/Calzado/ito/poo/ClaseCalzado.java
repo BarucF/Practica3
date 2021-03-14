@@ -5,6 +5,7 @@ package Calzado.ito.poo;
 
 import java.util.HashSet;
 // Start of user code (user defined imports)
+import java.util.Scanner;
 
 // End of user code
 
@@ -66,11 +67,25 @@ public class ClaseCalzado {
 	 * @param  
 	 * @return 
 	 */
+	
 	public float costoxLote(float costoxUnidad) {
 		// Start of user code for method costoxLote
 		float costoxLote = 0F;
+		//modificado para práctica 4
+		float costos=0;
+		float numUnidades=0;
+		
+		System.out.println("Ingrese el costo por unidad");
+		Scanner entrada=new Scanner(System.in);
+		costos=entrada.nextInt();
+		
+		System.out.println("Ingrese número de unidades que contiene el lote");
+		cantProdxDia=entrada.nextInt();
+		costoxLote=costos*cantProdxDia;
+		//fin modificaciones practica 4
 		return costoxLote;
 		// End of user code
+		
 	}
 
 	// Start of user code (user defined methods for ClaseCalzado)
@@ -150,8 +165,26 @@ public class ClaseCalzado {
 
 	@Override
 	public String toString() {
+		//modificaciones práctica 4
+		Scanner entrada=new Scanner(System.in);
+		System.out.println("Ingrese la clave");
+		clave=entrada.nextInt();
+		System.out.println("Ingrese el costo por unidad");
+		float costos=entrada.nextInt();
+		
+		System.out.println("Ingrese número de unidades que contiene el lote");
+		cantProdxDia=entrada.nextInt();
+		float costoxLote=costos*cantProdxDia;
+		System.out.println("El costo por lote es: "+costoxLote);
+		
+		
+		
+		//fin modificación
 		return "ClaseCalzado [clave=" + clave + ", material=" + material + ", troquel=" + troquel + ", cantProdxDia="
-				+ cantProdxDia + ", colores=" + colores + "]";
+				+cantProdxDia + ", colores=" + colores + "]";
+		
+		
+		
 	}
 
 }
