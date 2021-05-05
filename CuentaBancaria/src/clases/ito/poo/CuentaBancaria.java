@@ -3,20 +3,14 @@ package clases.ito.poo;
 
 import java.time.LocalDate;
 
-public class CuentaBancaria {
+public class CuentaBancaria implements Comparable<CuentaBancaria> {
 	
-	
-
 	private long numCuenta = 0L;
-
 	private String nomCliente = "";
-
 	private float Saldo = 0F;
-
 	private LocalDate fechaApertura = null;
-
 	private LocalDate fechaActualizacion = null;
-
+	
 	public CuentaBancaria() {
 		
 		super();
@@ -30,27 +24,27 @@ public class CuentaBancaria {
 		this.fechaApertura = fechaApertura;
 	}
 	
-	public boolean Deposito(float Cantidad,LocalDate newFechaActualizacion) {
+	public boolean Deposito(float Cantidad) {
 		boolean Deposito = false;
 		if(this.fechaApertura==null)
 			System.out.println("La cuenta no está activa");
 		else {
 			Deposito = true;
 			this.setSaldo(this.getSaldo()+Cantidad);
-			this.setFechaActualizacion(newFechaActualizacion);
+			this.fechaActualizacion=LocalDate.now();
 		}
 		
 		return Deposito;
 	}
 	
 
-	public boolean Retiro(float Cantidad,LocalDate newFechaActualizacion) {
+	public boolean Retiro(float Cantidad) {
 		
 		boolean Retiro = false;
 		if(Cantidad<=this.getSaldo()) {
 			Retiro = true;
 			this.setSaldo(this.getSaldo()-Cantidad);
-			this.setFechaActualizacion(newFechaActualizacion);
+			this.fechaActualizacion=LocalDate.now();
 		}
 		else
 			System.out.println("La cantidad a retirar sobrepasa el saldo");
@@ -106,6 +100,16 @@ public class CuentaBancaria {
 	public String toString() {
 		return "CuentaBancaria [numCuenta=" + numCuenta + ", nomCliente=" + nomCliente + ", Saldo=" + Saldo
 				+ ", fechaApertura=" + fechaApertura + ", fechaActualizacion=" + fechaActualizacion + "]";
+	}
+	@Override
+	public int compareTo(CuentaBancaria o) {
+		int compare=0;
+		if (this.numCuenta<o.getNumCuenta())
+			compare=-1;
+		else if(this.numCuenta>o.getNumCuenta())
+			compare=1;
+		return compare;
+		
 	}
 
 }
