@@ -58,17 +58,19 @@ public class Aplicacion {
 	}
 	
 	static void mostrarCuentas() {
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
+		else {
 		String cuentas="";
 		for(int i=0;i<c.getSize();i++)
 			cuentas=cuentas+"\n"+(c.getItem(i));
 		JOptionPane.showMessageDialog(null,cuentas);
+		}
 	}
 	static void hacerDeposito() {
 		int pos=0;
 		float cantidad=0;
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 			boolean bandera=true;
@@ -93,7 +95,7 @@ public class Aplicacion {
 	static void hacerRetiro() {
 		int pos=0;
 		float cantidad=0;
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 			boolean bandera=true;
@@ -122,7 +124,7 @@ public class Aplicacion {
 	
 	static void borrarCuenta() {
 		int pos=0;
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 			boolean bandera=true;
@@ -162,7 +164,7 @@ public class Aplicacion {
 		}
 	}
 	public static void montoTotal() {
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 		    float montoTotal=0;
@@ -174,7 +176,7 @@ public class Aplicacion {
 	
 	public static void montoPromedio() {
 		float montoProm=0;
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 		    float montoTotal=0;
@@ -186,7 +188,7 @@ public class Aplicacion {
 	}
 	
 	public static void mayor10mil() {
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
 			CuentaBancaria copia[]=new CuentaBancaria[c.getSize()];
@@ -201,9 +203,10 @@ public class Aplicacion {
 	}
 	
 	public static void saldoMax() {
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
+			int vacio=0;
 			float max=c.getItem(0).getSaldo();
 			for(int i=0;i<c.getSize();i++)
 				if(c.getItem(i).getSaldo()>max)
@@ -211,9 +214,11 @@ public class Aplicacion {
 			CuentaBancaria copia[]=new CuentaBancaria[c.getSize()];
 			for(int i=0;i<c.getSize();i++)
 				if(c.getItem(i).getSaldo()==max) 
-					copia[i]=c.getItem(i);
+					copia[i-vacio]=c.getItem(i);
+				else
+					vacio++;
 			String cuentas="";
-			for(int j=0;j<c.getSize();j++)
+			for(int j=0;j<(c.getSize()-vacio);j++)
 				cuentas=cuentas+"\n"+copia[j];
 			JOptionPane.showMessageDialog(null,"La/las cuenta/cuentas con mayor saldo es/son:\n"+cuentas);
 		}
@@ -221,9 +226,10 @@ public class Aplicacion {
 	}
 	
 	public static void saldoMin() {
-		if(c.getSize()==0)
+		if(c.isFree())
 			JOptionPane.showMessageDialog(null,"Todavía no hay ninguna cuenta");
 		else {
+			int vacio=0;
 			float min=c.getItem(0).getSaldo();
 			for(int i=0;i<c.getSize();i++)
 				if(c.getItem(i).getSaldo()<min)
@@ -231,9 +237,11 @@ public class Aplicacion {
 			CuentaBancaria copia[]=new CuentaBancaria[c.getSize()];
 			for(int i=0;i<c.getSize();i++)
 				if(c.getItem(i).getSaldo()==min) 
-					copia[i]=c.getItem(i);
+					copia[i-vacio]=c.getItem(i);
+				else
+					vacio++;
 			String cuentas="";
-			for(int j=0;j<c.getSize();j++)
+			for(int j=0;j<(c.getSize()-vacio);j++)
 				cuentas=cuentas+"\n"+copia[j];
 			JOptionPane.showMessageDialog(null,"La/las cuenta/cuentas con menor saldo es/son:\n"+cuentas);
 		}
